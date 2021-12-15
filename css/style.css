@@ -1,19 +1,15 @@
-.gallery-container{
-    background-color: blue;
-    height: 30px;
+*{
+    box-sizing: border-box;
 }
 
-.aditor-container{
-    background-color: yellow;
-    height: 90px;
+body{
+    margin: 0;
+    
 }
 
-.canvas-container{
-background-color: violet;
-    height: 30px;
-}
 
-.aditor{
+/* .editor{
    background-color: turquoise;
     height: 30px;
-}
+} */
+
