@@ -1,0 +1,19 @@
+.gallery-container{
+    background-color: blue;
+    height: 30px;
+}
+
+.aditor-container{
+    background-color: yellow;
+    height: 90px;
+}
+
+.canvas-container{
+background-color: violet;
+    height: 30px;
+}
+
+.aditor{
+   background-color: turquoise;
+    height: 30px;
+}
