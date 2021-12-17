@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,22 +8,55 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Meme</title>
 </head>
-<body onload="onInit()">
-  
-<section class="gallery-container"></section>
-<section class="aditor-container">
-    <div class="canvas-container">
-        <canvas id="my-canvas" height="450" width="450"></canvas>
-    </div>
 
-    <div class="editor">
-        <input type="text" onkeyup="onChangeTxt(value)">
-        <input type="color" oninput="onTxtColorChange(value)" value="#ffffff">
-        <button onclick="onChangeTxtSize(1)" class="increase">+</button>
-        <button onclick="onChangeTxtSize(-1)" class="decrease">-</button>
-        <button onclick="onChangeLine()">&#8645</button>
+<body onload="onInit()">
+    <div class="header">
+        <header class="main-layout flex flex align-center space-between">
+            <div class="logo">memegen</div>
+            <nav class="main-nav">
+                <ul class="clean-list flex">
+                    <li><a href="#" onclick="onGallery()">Gallery</a></li>
+                    <li><a href="#" onclick="onAbout()">About</a></li>
+                </ul>
+            </nav>
+        </header>
     </div>
-</section>
+    <main class="main-layout flex">
+
+        <section class="gallery-container main-layout flex fade active"></section>
+        <section class="editor-container flex fade">
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="450" width="450"></canvas>
+            </div>
+            <div class="editor">
+                <input type="text" class="txt-input" placeholder="Enter Text" onkeyup="onChangeTxt(value)">
+                <input type="color" oninput="onTxtColorChange(value)" value="#ffffff">
+                <input type="color" oninput="onStrokeColorChange(value)" value="#ffffff">
+                <button onclick="onChangeTxtSize(1)" class="increase">+</button>
+                <button onclick="onChangeTxtSize(-1)" class="decrease">-</button>
+                <button onclick="onChangeLine()">&#8645</button>
+                <button onclick="onAlignLeft()">left</button>
+                <button onclick="onAlignCenter()">center</button>
+                <button onclick="onAlignRight()">right</button>
+                <button onclick="onDeleteLine()">delete</button>
+                <button onclick="onAddLine()">add</button>
+                <button onclick="onMoveLine(true)">up</button>
+                <button onclick="onMoveLine(false)">down</button>
+            </div>
+        </section>
+    </main>
+    <footer class="main-footer ">
+        <div class="main-layout flex flex-column ">
+            <div class="logo">memegen</div>
+            <small>© All Rights Reserved </small>
+            <ul class="social-nav clean-list flex justify-center">
+                <li> <a class="fa facebook" href=""></a></li>
+                <li> <a class="fa twitter" href=""></a></li>
+                <li> <a class="fa behance" href=""></a></li>
+                <li> <a class="fa dribble" href=""></a></li>
+            </ul>
+        </div>
+    </footer>
     <script src="/js/service/storage.service.js"></script>
     <script src="js/service/utils.service.js"></script>
     <script src="/js/service/meme.service.js"></script>
@@ -30,5 +64,5 @@
     <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
 </body>
-</html>
 
+</html>

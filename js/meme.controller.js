@@ -9,20 +9,18 @@ function onInit() {
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
     console.log('ctx', gCtx);
+    createImgs()
     // clearCanvas()
     // resizeCanvas()
     // addListeners()
-    renderMeme()
     renderGallery()
+    renderMeme()
 
 }
 
 function renderMeme() {
     const meme = getMeme()
-    // const gCanvas = document.querySelector('#my-canvas')
     drawImgFromlocal(meme)
-
-
 }
 
 function renderGallery() {
@@ -33,42 +31,44 @@ function renderGallery() {
     document.querySelector('.gallery-container').innerHTML = strHtml.join('')
 }
 
-function drawText(txt, x, y) {
+function drawText(txt, x, y, lineIdx) {
     const meme = getMeme()
-    // gCtx.textBaseline = 'middle';
-    // gCtx.textAlign = 'center';
-    const lineIdx = meme.selectedLineIdx
-    gCtx.lineWidth = 2;
-    gCtx.font = `${meme.lines[lineIdx].size}px IMPACT`
-    gCtx.fillStyle = meme.lines[lineIdx].color;
-    gCtx.fillText(txt, x, y);
+    gCtx.textBaseline = 'middle'
+    gCtx.textAlign = meme.lines[lineIdx].align
+    gCtx.lineWidth = 1
+    gCtx.font = `${meme.lines[lineIdx].size}px impact`
+    gCtx.fillStyle = meme.lines[lineIdx].color
+    gCtx.strokeStyle = meme.lines[lineIdx].stroke
+    gCtx.fillText(txt, x, y)
+    gCtx.strokeText(txt, x, y)
 }
 
 function drawImgFromlocal(meme) {
-    const txt = meme.lines[meme.selectedLineIdx].txt
+    // const txt = meme.lines[meme.selectedLineIdx].txt
     const currImg = getImgById(meme.selectedImgId)
+    console.log(currImg);
     var img = new Image()
     img.src = currImg.url
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
-        const line = meme.lines.map(line => {
-           return drawText(line.txt, line.posX,line.posY)
+        meme.lines.map((line, idx) => {
+            return drawText(line.txt, line.posX, line.posY, idx)
         })
     }
 }
 
 function onChangeTxt(txt) {
-    // console.log(txt);
     setLineText(txt)
     renderMeme()
 }
 
 function onTxtColorChange(color) {
-    const meme = getMeme()
-    const txt = meme.lines[meme.selectedLineIdx].txt
     setTextColor(color)
-    gCtx.fillStyle = color
-    //    drawText(txt, 20, 60)
+    renderMeme()
+}
+
+function onStrokeColorChange(color) {
+    setStrokeColor(color)
     renderMeme()
 }
 
@@ -80,4 +80,34 @@ function onChangeTxtSize(value) {
 
 function onChangeLine() {
     setSelectedLineIdx()
+}
+
+function onAlignLeft() {
+    setAlignLeft()
+    renderMeme()
+}
+
+function onAlignCenter() {
+    setAlignCenter()
+    renderMeme()
+}
+
+function onAlignRight() {
+    setAlignRight()
+    renderMeme()
+}
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
+
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+}
+
+function onMoveLine(isUp) {
+    setLinePos(isUp)
+    renderMeme()
 }

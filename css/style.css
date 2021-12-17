@@ -1,15 +1,145 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+html {
     margin: 0;
-    
+    padding: 0;
 }
+
+/* fonts */
+@font-face {
+    font-family: Creepster;
+    src: url(/font/Spicy_Rice/SpicyRice-Regular.ttf);
+}
+
+body {
+    margin: 0;
+    background-color: rgb(227, 227, 227);
+}
+
+/* helpers */
+
+.flex {
+    display: flex;
+}
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+/* ************** */
+
+
+.header {
+    background-color: rgb(255, 127, 0);
+    box-shadow: inset 0px -6px 0 rgb(255, 255, 255);
+    /* position: sticky; */
+    /* z-index: 6; */
+}
+
+.logo {
+    font-family: Creepster, cursive;
+    text-align: center;
+    font-size: 2.375rem;
+    letter-spacing: -0.03125rem;
+    line-height: 1.25;
+    color: rgb(231 227 224);
+    background-color: rgba(84, 84, 84, 0);
+    text-shadow: rgb(0, 0, 0) 3px 2px 4px;
+}
+
+.main-nav li {
+    width: 132px;
+    border-inline-end: 2px solid rgb(255, 255, 255);
+}
+
+.main-nav li:first-child {
+    border-inline-start: 2px solid rgb(255, 255, 255);
+}
+
+.main-nav li :hover {
+    box-shadow: inset 0px -6px 0 rgb(39, 41, 36);
+    color: rgb(39, 41, 36);
+}
+.main-nav li :focus {
+    box-shadow: inset 0px -6px 0 rgb(39, 41, 36);
+    color: rgb(39, 41, 36);
+}
+
+.main-nav a {
+    display: flex;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.2rem; ;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+
+}
+
+.main-layout {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+main {
+    padding-block-start: 20px;
+}
+
+.gallery-container {
+    transition: 2s;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-block-end: 30px;
+}
+
+.gallery-container img {
+    border: 2px solid #ccc;
+    width: 310px;
+    cursor: pointer;
+}
+
+.gallery-container img:hover {
+    border: 2px solid #777;
+  }
+
+.editor-container {
+    gap: 40px;
+    transition: 0.5s;
+}
+
+.fade {
+    opacity: 0;
+    transition: 0.5s;
+    position: absolute;
+    /* display: none; */
+    left: -2000px;
+    z-index: -1;
+}
+
+.active {
+    position: sticky;
+    opacity: 1;
+    transition: 0.5s;
+    z-index: 5;
+    display: flex;
+}
+
 
 
 /* .editor{
    background-color: turquoise;
     height: 30px;
 } */
-
