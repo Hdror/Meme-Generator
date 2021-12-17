@@ -15,7 +15,7 @@ function getImgById(imgId) {
 }
 
 function setImg(imgId) {
-    const meme = getMeme()
+    var meme = getMeme()
     meme.selectedImgId = imgId
 }
 
