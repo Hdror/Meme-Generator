@@ -1,6 +1,6 @@
 'use strict'
 
-var gImgNextId = 1
+var gImgNextId = 0
 var gImgs = []
 
 function getImgs() {
