@@ -1,30 +1,60 @@
 'use strict'
+var gMeme
 
-var gMeme = {
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: '',
-            size: 35,
-            align: 'left',
-            color: 'white',
-            stroke: 'black',
-            posX: 40,
-            posY: 40,
-        },
-        {
-            txt: '',
-            size: 35,
-            align: 'left',
-            color: 'white',
-            stroke: 'black',
-            posX: 40,
-            posY: 350,
-        },
-    ]
+function createMeme() {
+    var canvas = getCanvas()
+    gMeme = {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: '',
+                size: 35,
+                align: 'left',
+                color: 'white',
+                stroke: 'black',
+                posX: canvas.width / 2,
+                posY: 40,
+            },
+            {
+                txt: '',
+                size: 35,
+                align: 'center',
+                color: 'white',
+                stroke: 'black',
+                posX: canvas.width / 2,
+                posY: 350,
+            },
+        ]
+
+    }
 
 }
+// var gMeme = {
+//     selectedImgId: 1,
+//     selectedLineIdx: 0,
+//     lines: [
+//         {
+//             txt: '',
+//             size: 35,
+//             align: 'left',
+//             color: 'white',
+//             stroke: 'black',
+//             posX: gCanvas.width / 2,
+//             posY: 40,
+//         },
+//         {
+//             txt: '',
+//             size: 35,
+//             align: 'center',
+//             color: 'white',
+//             stroke: 'black',
+//             posX: gCanvas.width / 2,
+//             posY: 350,
+//         },
+//     ]
+
+// }
 
 
 function setLineText(value) {
@@ -52,7 +82,8 @@ function updateTxtSize(value) {
 function setSelectedLineIdx() {
     var lineIdx = gMeme.selectedLineIdx
     console.log(lineIdx);
-    if (lineIdx > gMeme.lines.length - 1 && !(lineIdx - 1 < 0)) gMeme.selectedLineIdx = 0
+    console.log(gMeme.lines.length);
+    if (lineIdx >= gMeme.lines.length - 1 || lineIdx < 0) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx++
 
 
@@ -60,7 +91,7 @@ function setSelectedLineIdx() {
 
 
 function setAlignLeft() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'end'
+    gMeme.lines[gMeme.selectedLineIdx].align = 'right'
 }
 
 function setAlignCenter() {
@@ -68,7 +99,7 @@ function setAlignCenter() {
 }
 
 function setAlignRight() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'start'
+    gMeme.lines[gMeme.selectedLineIdx].align = 'left'
 }
 
 function addLine() {
@@ -84,12 +115,13 @@ function addLine() {
         posX: gCanvas.width / 2,
         posY,
     })
-    gMeme.selectedLineIdx = gMeme.lines.length - 2
+    gMeme.selectedLineIdx = (gMeme.lines.length <= 1) ? 0 : gMeme.lines.length - 2
 }
 
 function deleteLine() {
     gMeme.lines.splice([gMeme.selectedLineIdx], 1)
-    gMeme.selectedLineIdx--
+    gMeme.selectedLineIdx = (gMeme.lines.length <= 1) ? 0 : gMeme.selectedLineIdx - 1
+    // gMeme.selectedLineIdx--s
 }
 
 function setLinePos(isUp) {

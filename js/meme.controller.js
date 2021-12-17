@@ -2,13 +2,13 @@
 
 var gCanvas
 var gCtx
-// var gMeme = getMeme()
 
 
 function onInit() {
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
     console.log('ctx', gCtx);
+    createMeme()
     createImgs()
     // clearCanvas()
     // resizeCanvas()
@@ -25,7 +25,7 @@ function renderMeme() {
 
 function renderGallery() {
     const imgs = getImgs()
-    const strHtml = imgs.map((img, idx) => {
+    const strHtml = imgs.map(img => {
         return `<img onclick="onImgSelect(${img.id})" src="meme-imgs(square)/${img.id}.jpg" alt="">`
     })
     document.querySelector('.gallery-container').innerHTML = strHtml.join('')
@@ -55,6 +55,10 @@ function drawImgFromlocal(meme) {
             return drawText(line.txt, line.posX, line.posY, idx)
         })
     }
+}
+
+function getCanvas(){
+    return gCanvas
 }
 
 function onChangeTxt(txt) {

@@ -129,9 +129,9 @@ main {
 }
 
 .active {
+    transition: 0.5s;
     position: sticky;
     opacity: 1;
-    transition: 0.5s;
     z-index: 5;
     display: flex;
 }

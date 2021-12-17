@@ -43,9 +43,11 @@ function createImgs() {
 }
 
 function createImg(...keys) {
+    gImgNextId++
+    console.log(gImgNextId);
     return {
-        id: gImgNextId++,
-        url: `./meme-imgs(square)/${id}.jpg`,
+        id: gImgNextId,
+        url: `./meme-imgs(square)/${gImgNextId}.jpg`,
         keywords: keys
     }
 }
