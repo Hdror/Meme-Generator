@@ -1,7 +1,7 @@
 'use strict'
 
 var gImgNextId = 0
-var gImgs = []
+var gImgs 
 
 function getImgs() {
     return gImgs
@@ -42,12 +42,11 @@ function createImgs() {
     ]
 }
 
-function createImg(...keys) {
+function createImg(...keywords) {
     gImgNextId++
-    console.log(gImgNextId);
     return {
         id: gImgNextId,
         url: `./meme-imgs(square)/${gImgNextId}.jpg`,
-        keywords: keys
+        keywords,
     }
 }

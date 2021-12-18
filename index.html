@@ -10,15 +10,17 @@
 </head>
 
 <body onload="onInit()">
+    <div class="main-screen" onclick="toggleMenu()"></div>
     <div class="header">
         <header class="main-layout flex flex align-center space-between">
             <div class="logo">memegen</div>
             <nav class="main-nav">
                 <ul class="clean-list flex">
                     <li><a href="#" onclick="onGallery()">Gallery</a></li>
-                    <li><a href="#" onclick="onAbout()">About</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
+            <button class="btn-menu" onclick="toggleMenu()">☰</button>
         </header>
     </div>
     <main class="main-layout flex">
@@ -26,43 +28,59 @@
         <section class="gallery-container main-layout flex fade active"></section>
         <section class="editor-container flex fade">
             <div class="canvas-container">
-                <canvas id="my-canvas" height="450" width="450"></canvas>
+                <canvas id="my-canvas" ></canvas>
             </div>
             <div class="editor">
                 <input type="text" class="txt-input" placeholder="Enter Text" onkeyup="onChangeTxt(value)">
+                <button onclick="onAddLine()"><img src="editor/add.png" alt=""></button>
+                <button onclick="onDeleteLine()"><img src="editor/trash.png" alt=""></button>
+                <button onclick="onChangeLine()"><img src="editor/toggle.png"></button>
                 <input type="color" oninput="onTxtColorChange(value)" value="#ffffff">
                 <input type="color" oninput="onStrokeColorChange(value)" value="#ffffff">
-                <button onclick="onChangeTxtSize(1)" class="increase">+</button>
-                <button onclick="onChangeTxtSize(-1)" class="decrease">-</button>
-                <button onclick="onChangeLine()">&#8645</button>
-                <button onclick="onAlignLeft()">left</button>
-                <button onclick="onAlignCenter()">center</button>
-                <button onclick="onAlignRight()">right</button>
-                <button onclick="onDeleteLine()">delete</button>
-                <button onclick="onAddLine()">add</button>
-                <button onclick="onMoveLine(true)">up</button>
-                <button onclick="onMoveLine(false)">down</button>
-                <select onchange="onChangeFont" >
+                <button onclick="onChangeTxtSize(1)" class="increase"><img
+                        src="editor/increase font - icon.png"></button>
+                <button onclick="onChangeTxtSize(-1)" class="decrease"><img
+                        src="editor/decrease font - icon.png"></button>
+                <button onclick="onAlignLeft()"><img src="editor/align-to-left.png"></button>
+                <button onclick="onAlignCenter()"><img src="editor/center-text-alignment.png" alt=""></button>
+                <button onclick="onAlignRight()"><img src="editor/align-to-right.png" alt=""></button>
+                <button onclick="onMoveLine(true)"><img src="editor/up.png" alt=""></button>
+                <button onclick="onMoveLine(false)"><img src="editor/down.png" alt=""></button>
+                <select onchange="onChangeFont(this.value)">
+                    <option value="">Font Style</option>
                     <option value="Ariel">Ariel</option>
                     <option value="Impact">Impact</option>
                     <option value="Monospace">Monospace</option>
-                    <option value="Monospace">Monospace</option>
-                    <option value="Sans-serif">Sans-serif</option>
+                    <option value="David">David</option>
+                    <option value="Times-New-Roman">Times New Roman</option>
                 </select>
+                <button><a href="#" class="btn" onclick="onDownloadCanvas(this)" download="my-img.jpg"><img src="editor/download.png"></a></button>
             </div>
         </section>
     </main>
-    <footer class="main-footer ">
-        <div class="main-layout flex flex-column ">
-            <div class="logo">memegen</div>
-            <small>© All Rights Reserved </small>
-            <ul class="social-nav clean-list flex justify-center">
-                <li> <a class="fa facebook" href=""></a></li>
-                <li> <a class="fa twitter" href=""></a></li>
-                <li> <a class="fa behance" href=""></a></li>
-                <li> <a class="fa dribble" href=""></a></li>
-            </ul>
+    <section id="about" class="about fade active">
+        <div class="about-info fade active flex">
+            <div class="about-img-container flex">
+                <img src="../img/rick.png" alt="">
+            </div>
+            <section class="some-words flex">
+                <h2>Rick Sanchez</h2>
+                <p class="about-txt">
+                    Hi I am Rick Wubba Lubba Dub Dub... 70 years old , From The Galaxey.
+                    Freedom fighter and a lover - To live is to risk it all, otherwise you're just an inert chunk of
+                    randomly assembled molecules drifting wherever the universe blows you </p>
+                <ul class="social-nav clean-list flex justify-content">
+                    <li> <a class="fa facebook" href="https://www.facebook.com/"></a></li>
+                    <li> <a class="fa twitter" href="https://twitter.com/?lang=en"></a></li>
+                    <li> <a class="fa youtube" href="https://www.youtube.com/watch?v=F586JktJyEg"></a></li>
+                    <li> <a class="fa linkedin" href="https://il.linkedin.com/"></a></li>
+                </ul>
+            </section>
         </div>
+    </section>
+    <footer class="main-footer flex column justify-content">
+        <div class="logo">memegen</div>
+        <small>© All Rights Reserved </small>
     </footer>
     <script src="js/service/storage.service.js"></script>
     <script src="js/service/utils.service.js"></script>

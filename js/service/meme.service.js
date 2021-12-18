@@ -8,53 +8,35 @@ function createMeme() {
         selectedLineIdx: 0,
         lines: [
             {
-                txt: '',
-                size: 35,
-                align: 'left',
+                txt: 'Text Line',
+                size: 40,
+                align: 'center',
+                ftr:'rlt',
                 color: 'white',
                 stroke: 'black',
                 posX: canvas.width / 2,
-                posY: 40,
+                posY: 80,
+                font: 'Impact'
             },
             {
-                txt: '',
-                size: 35,
+                txt: 'Text Line',
+                size: 40,
                 align: 'center',
                 color: 'white',
                 stroke: 'black',
                 posX: canvas.width / 2,
-                posY: 350,
+                posY: canvas.height-80,
+                font: 'Impact'
             },
         ]
 
     }
 
 }
-// var gMeme = {
-//     selectedImgId: 1,
-//     selectedLineIdx: 0,
-//     lines: [
-//         {
-//             txt: '',
-//             size: 35,
-//             align: 'left',
-//             color: 'white',
-//             stroke: 'black',
-//             posX: gCanvas.width / 2,
-//             posY: 40,
-//         },
-//         {
-//             txt: '',
-//             size: 35,
-//             align: 'center',
-//             color: 'white',
-//             stroke: 'black',
-//             posX: gCanvas.width / 2,
-//             posY: 350,
-//         },
-//     ]
 
-// }
+function setFont(font){
+    gMeme.lines[gMeme.selectedLineIdx].font = font
+}
 
 
 function setLineText(value) {
@@ -103,13 +85,11 @@ function setAlignRight() {
 }
 
 function addLine() {
-    // if (gMeme.lines[gMeme.selectedLineIdx].txt === '') return
-    // if (gMeme.lines.length > 2) return
     var linesLength = gMeme.lines.length
     var posY = (gMeme.lines.length <= 2) ? 80 : gMeme.lines[linesLength - 2].posY + 40
     gMeme.lines.splice(linesLength - 1, 0, {
         txt: 'text line',
-        size: 35,
+        size: 40,
         align: 'center',
         color: 'white',
         posX: gCanvas.width / 2,
@@ -121,11 +101,17 @@ function addLine() {
 function deleteLine() {
     gMeme.lines.splice([gMeme.selectedLineIdx], 1)
     gMeme.selectedLineIdx = (gMeme.lines.length <= 1) ? 0 : gMeme.selectedLineIdx - 1
-    // gMeme.selectedLineIdx--s
 }
 
 function setLinePos(isUp) {
     if (isUp) gMeme.lines[gMeme.selectedLineIdx].posY -= 5
     else gMeme.lines[gMeme.selectedLineIdx].posY += 5
+}
+
+function getLineSizeById(line){
+    let metrics = gCtx.measureText(line.txt);
+    let width = metrics.width;
+    let height = line.size;
+    return {width, height};
 }
 

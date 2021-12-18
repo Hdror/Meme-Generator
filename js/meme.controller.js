@@ -1,7 +1,7 @@
 'use strict'
 
-var gCanvas
-var gCtx
+let gCanvas
+let gCtx
 
 
 function onInit() {
@@ -10,12 +10,38 @@ function onInit() {
     console.log('ctx', gCtx);
     createMeme()
     createImgs()
-    // clearCanvas()
+    addEventListener()
+   
+    // clearCanvas()s
     // resizeCanvas()
     // addListeners()
     renderGallery()
     renderMeme()
+    
+}
 
+function addEventListener(){
+    const canvas = document.querySelector('.canvas-container')
+    canvas.addEventListener('resize',resizeCanvas())
+    //     var width  = 300
+    //     var height = 300
+    //     gCtx.canvas.width  = width;
+    //     gCtx.canvas.height = height;
+    //     gCtx.translate(width/2,height/2); // now 0,0 is the center of the canvas.
+    //   },false)
+}
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-container');
+
+    // Note: changing the canvas dimension this way clears the canvas
+    gCanvas.width = elContainer.offsetWidth;
+    // Unless needed, better keep height fixed.
+      gCanvas.height = elContainer.offsetHeight
+  }
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
 }
 
 function renderMeme() {
@@ -33,10 +59,11 @@ function renderGallery() {
 
 function drawText(txt, x, y, lineIdx) {
     const meme = getMeme()
-    gCtx.textBaseline = 'middle'
+    // gCtx.textBaseline = 'middle'
     gCtx.textAlign = meme.lines[lineIdx].align
-    gCtx.lineWidth = 1
-    gCtx.font = `${meme.lines[lineIdx].size}px impact`
+    gCtx.lineWidth = 4
+    gCtx.lineJoin = 'round'
+    gCtx.font = `${meme.lines[lineIdx].size}px ${meme.lines[lineIdx].font}`
     gCtx.fillStyle = meme.lines[lineIdx].color
     gCtx.strokeStyle = meme.lines[lineIdx].stroke
     gCtx.fillText(txt, x, y)
@@ -44,9 +71,7 @@ function drawText(txt, x, y, lineIdx) {
 }
 
 function drawImgFromlocal(meme) {
-    // const txt = meme.lines[meme.selectedLineIdx].txt
     const currImg = getImgById(meme.selectedImgId)
-    console.log(currImg);
     var img = new Image()
     img.src = currImg.url
     img.onload = () => {
@@ -57,7 +82,34 @@ function drawImgFromlocal(meme) {
     }
 }
 
-function getCanvas(){
+function drawRectLine(idx) {
+    let line = getLineById(idx);
+    let lineSize = getLineSizeById(line);
+    let lineXStart = line.x - lineSize.width / 2 - 10;
+    let lineYStart = line.y - line.size - 5;
+    let lineXEnd = lineSize.width + 20;
+    let lineYEnd = line.size + 20;
+    if (line.align === 'left') {
+        lineXStart += lineSize.width / 2;
+        lineXEnd += lineSize.width / 2;
+    }
+    if (line.align === 'right') {
+        lineXStart -= lineSize.width / 2;
+        lineXEnd -= lineSize.width / 2;
+    }
+    gCtx.beginPath()
+    gCtx.rect(lineXStart, lineYStart, lineXEnd, lineYEnd)
+    gCtx.strokeStyle = '#799ff7'
+    gCtx.stroke()
+    gCtx.closePath();
+}
+
+function onDownloadCanvas(elLink) {
+    elLink.href = gCanvas.toDataURL();
+    elLink.download = 'my-img.png';
+}
+
+function getCanvas() {
     return gCanvas
 }
 
@@ -68,6 +120,11 @@ function onChangeTxt(txt) {
 
 function onTxtColorChange(color) {
     setTextColor(color)
+    renderMeme()
+}
+
+function onChangeFont(font) {
+    setFont(font)
     renderMeme()
 }
 
