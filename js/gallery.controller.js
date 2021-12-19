@@ -11,6 +11,6 @@ function onImgSelect(imgId) {
 
 function onGallery(){
      document.querySelector('.gallery-container').classList.toggle("active")
+     document.querySelector('.editor-container').classList.toggle("active")
      document.querySelector('.about').classList.toggle("active")
-    document.querySelector('.editor-container').classList.toggle("active")
 }

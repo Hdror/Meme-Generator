@@ -12,7 +12,7 @@
 <body onload="onInit()">
     <div class="main-screen" onclick="toggleMenu()"></div>
     <div class="header">
-        <header class="main-layout flex flex align-center space-between">
+        <header class="main-layout flex align-center space-between">
             <div class="logo">memegen</div>
             <nav class="main-nav">
                 <ul class="clean-list flex">
@@ -23,12 +23,12 @@
             <button class="btn-menu" onclick="toggleMenu()">☰</button>
         </header>
     </div>
-    <main class="main-layout flex">
+    <main class="main-layout align-center flex">
 
         <section class="gallery-container main-layout flex fade active"></section>
         <section class="editor-container flex fade">
             <div class="canvas-container">
-                <canvas id="my-canvas" ></canvas>
+                <canvas id="my-canvas" width="450" height="450"></canvas>
             </div>
             <div class="editor">
                 <input type="text" class="txt-input" placeholder="Enter Text" onkeyup="onChangeTxt(value)">
@@ -54,12 +54,13 @@
                     <option value="David">David</option>
                     <option value="Times-New-Roman">Times New Roman</option>
                 </select>
-                <button><a href="#" class="btn" onclick="onDownloadCanvas(this)" download="my-img.jpg"><img src="editor/download.png"></a></button>
+                <button><a href="#" class="btn" onclick="onDownloadCanvas(this)" download="my-img.jpg"><img
+                            src="editor/download.png"></a></button>
             </div>
         </section>
     </main>
     <section id="about" class="about fade active">
-        <div class="about-info fade active flex">
+        <div class="about-info main-layout fade active flex">
             <div class="about-img-container flex">
                 <img src="img/rick.jpeg" alt="">
             </div>
@@ -69,25 +70,27 @@
                     Hi I am Rick Wubba Lubba Dub Dub... 70 years old , From The Galaxey.
                     Freedom fighter and a lover - To live is to risk it all, otherwise you're just an inert chunk of
                     randomly assembled molecules drifting wherever the universe blows you </p>
-                <ul class="social-nav clean-list flex justify-content">
-                    <li> <a class="fa facebook" href="https://www.facebook.com/"></a></li>
-                    <li> <a class="fa twitter" href="https://twitter.com/?lang=en"></a></li>
-                    <li> <a class="fa youtube" href="https://www.youtube.com/watch?v=F586JktJyEg"></a></li>
-                    <li> <a class="fa linkedin" href="https://il.linkedin.com/"></a></li>
-                </ul>
             </section>
+            <ul class="social-nav clean-list flex justify-content">
+                <li> <a class="fa facebook" href="https://www.facebook.com/"></a></li>
+                <li> <a class="fa twitter" href="https://twitter.com/?lang=en"></a></li>
+                <li> <a class="fa youtube" href="https://www.youtube.com/watch?v=F586JktJyEg"></a></li>
+                <li> <a class="fa linkedin" href="https://il.linkedin.com/"></a></li>
+            </ul>
         </div>
     </section>
-    <footer class="main-footer flex column justify-content">
-        <div class="logo">memegen</div>
-        <small>© All Rights Reserved </small>
+
+    <footer class="main-footer flex space-evenly">
+        <div class="main-layout flex column space-evenly">
+            <div class="logo">memegen</div>
+            <small>© All Rights Reserved </small>
+        </div>
     </footer>
     <script src="js/service/storage.service.js"></script>
-    <script src="js/service/utils.service.js"></script>
     <script src="js/service/meme.service.js"></script>
     <script src="js/service/gallery.service.js"></script>
-    <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
 </body>
 
 </html>

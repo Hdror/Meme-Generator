@@ -66,8 +66,8 @@ body {
     justify-content: space-between;
 }
 
-.justify-content {
-    justify-content: center;
+.space-evenly {
+    justify-content:space-evenly;
 }
 
 .column {
@@ -80,17 +80,18 @@ body {
     position: absolute;
     /* display: none; */
     left: -2500px;
-    height: 0px;
+    height: 0%;
+    width: 0%;
     z-index: -1;
 }
 
 .active {
     transition: 0.5s;
-    position: sticky;
-    opacity: 1;
+    position: static;
     z-index: 5;
+    opacity: 1;
     height: 100%;
-    display: flex;
+    width: 100%;
 }
 
 /* ************** */
@@ -114,14 +115,6 @@ body {
     text-shadow: rgb(0, 0, 0) 3px 2px 4px;
 }
 
-.main-nav li {
-    width: 132px;
-    border-inline-end: 2px solid rgb(255, 255, 255);
-}
-
-.main-nav li:first-child {
-    border-inline-start: 2px solid rgb(255, 255, 255);
-}
 
 .main-nav li :hover {
     box-shadow: inset 0px -6px 0 rgb(39, 41, 36);
@@ -144,16 +137,28 @@ body {
     color: rgb(255, 255, 255);
 }
 
+.main-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .35);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
 
+    transition: opacity .6s;
+}
 
 body.menu-open .main-screen {
     pointer-events: auto;
     opacity: 1;
 }
 
+
 .main-layout {
     max-width: 350px;
-    padding: 0px 1rem;
 }
 
 .gallery-container {
@@ -166,7 +171,7 @@ body.menu-open .main-screen {
 
 .gallery-container img {
     border: 2px solid #ccc;
-    width: 120px;
+    width: 180px;
     cursor: pointer;
 }
 
@@ -177,9 +182,11 @@ body.menu-open .main-screen {
 
 .editor-container {
     gap: 40px;
+    /* flex-wrap: wrap; */
     transition: 0.5s;
     margin: 50px 0px;
     align-items: center;
+    justify-content: center;
 }
 
 .editor {
@@ -187,14 +194,14 @@ body.menu-open .main-screen {
     justify-content: center;
     padding: 0px 20px;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 25px;
     height: 250px;
 }
 
-.canvas-container {
-    width: 300px;
-    height: 300px;
-}
+/* .canvas-container {
+    width: 500px;
+    height: 500px;
+} */
 
 .editor-container img {
     width: 35px;
@@ -228,8 +235,7 @@ body.menu-open .main-screen {
 
 
 .about {
-    background-color: rgb(255, 255, 255);
-    padding: 50px 0px;
+    background-color: rgb(219, 212, 212);
 }
 
 .about h2 {
@@ -237,11 +243,8 @@ body.menu-open .main-screen {
 }
 
 .about-info {
-    justify-content: center;
-    padding: 0px 100px;
-    gap: 20px;
+    gap: 50px;
     align-items: center;
-    text-align: center;
 }
 
 .about img {
@@ -253,27 +256,30 @@ body.menu-open .main-screen {
 .some-words {
     flex-direction: column;
     align-items: center;
+    padding-left: 50px;
+    margin-block-end: 20px;
 }
 
 .some-words p {
     text-align: center;
-    padding: 0 50px;
+    padding: 0 20px;
     line-height: 1.5;
-    margin: 20px 0px;
-    font-size: 1.125rem;
+    margin: 10px 0px;
+    font-size: 1.15rem;
 }
 
 
 .social-nav a {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(184, 172, 172);
+    width: 50px;
+    height: 50px;
+    background-color: rgb(146, 139, 139);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-inline-start: 20px;
     color: inherit;
     text-decoration: none;
+    box-shadow: black -1px -2px 2px 0px
 }
 
 .fa.facebook:hover {
@@ -298,14 +304,14 @@ body.menu-open .main-screen {
     height: 130px;
     text-align: center;
     background-color: rgb(255, 127, 0);
-    justify-content: space-evenly;
+    align-items: space-evenly
 }
 
 
-@media (max-width: 900px) {
-
+@media (max-width: 650px) {
+    
     /* hamburger */
-    /* .main-nav ul {
+     .main-nav ul {
         position: fixed;
         top: 0;
         right: 0;
@@ -314,22 +320,22 @@ body.menu-open .main-screen {
         height: 100vh;
         border-inline-start: 1px solid #e5e5e5;
         width: 200px;
+        z-index: 6;
         transform: translateX(100%);
         
         transition: transform .6s, box-shadow .6s;
     }
+
     
     body.menu-open .main-nav ul {
         box-shadow: 0px 0px 30px rgb(0 0 0 / 30%);
         transform: translateX(0);
     }
-
-
-
+    
     .main-nav li {
         border-bottom: 1px solid #e5e5e5;
     }
-
+    
     .main-nav a {
         display: block;
         padding: 6px 10px;
@@ -340,20 +346,63 @@ body.menu-open .main-screen {
         text-decoration: none;
         background-color: #eee;
         color: inherit;
-    } */
+    } 
 }
 
 @media (min-width:450px) {
     .main-layout {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 0;
-        flex-basis: auto;
+        max-width: 400px;
     }
 
-    .canvas-container {
-        width: 500px;
-        height: 500px;
+
+    .gallery-container {
+        gap: 26px;
+        justify-content: center;
+    }
+
+    .gallery-container img {
+        max-width: 50%;
+    }
+
+    .about-info {
+        padding-top: 30px;
+    }
+}
+
+@media (min-width:650px) {
+    .main-layout {
+        max-width: 570px;
+    }
+
+    .main-nav li {
+        width: 100px;
+        border-inline-end: 2px solid rgb(255, 255, 255);
+    }
+
+    .gallery-container{
+        gap: 10px;
+    }
+
+    .gallery-container img {
+        max-width: 50%;
+    }
+
+    .main-nav li:first-child {
+        border-inline-start: 2px solid rgb(255, 255, 255);
+    }
+    
+    .btn-menu {
+        display: none;
+    }
+
+
+}
+
+
+@media (min-width:1000px) {
+    .main-layout {
+        max-width: 980px;
+        margin: 0 auto;
     }
 
     .gallery-container img {
@@ -366,14 +415,7 @@ body.menu-open .main-screen {
         padding-block-start: 10px;
     }
 
-    .btn-menu {
-        display: none;
-    }
+    
+
+  
 }
-
-
-
-/* .editor{
-   background-color: turquoise;
-    height: 30px;
-} */

@@ -7,38 +7,24 @@ let gCtx
 function onInit() {
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
-    console.log('ctx', gCtx);
-    createMeme()
     createImgs()
-    addEventListener()
-   
-    // clearCanvas()s
-    // resizeCanvas()
-    // addListeners()
+    createMeme()
     renderGallery()
     renderMeme()
-    
 }
 
-function addEventListener(){
-    const canvas = document.querySelector('.canvas-container')
-    canvas.addEventListener('resize',resizeCanvas())
-    //     var width  = 300
-    //     var height = 300
-    //     gCtx.canvas.width  = width;
-    //     gCtx.canvas.height = height;
-    //     gCtx.translate(width/2,height/2); // now 0,0 is the center of the canvas.
-    //   },false)
-}
+
 
 function resizeCanvas() {
+    console.log('dsds');
     var elContainer = document.querySelector('.canvas-container');
 
     // Note: changing the canvas dimension this way clears the canvas
     gCanvas.width = elContainer.offsetWidth;
     // Unless needed, better keep height fixed.
-      gCanvas.height = elContainer.offsetHeight
-  }
+    gCanvas.height = elContainer.offsetHeight
+    // window.addEventListener('resize', resizeCanvas())
+}
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
@@ -59,7 +45,6 @@ function renderGallery() {
 
 function drawText(txt, x, y, lineIdx) {
     const meme = getMeme()
-    // gCtx.textBaseline = 'middle'
     gCtx.textAlign = meme.lines[lineIdx].align
     gCtx.lineWidth = 4
     gCtx.lineJoin = 'round'
@@ -134,7 +119,6 @@ function onStrokeColorChange(color) {
 }
 
 function onChangeTxtSize(value) {
-    console.log(value);
     updateTxtSize(value)
     renderMeme()
 }
