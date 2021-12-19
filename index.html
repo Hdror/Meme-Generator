@@ -11,9 +11,9 @@
 
 <body onload="onInit()">
     <div class="main-screen" onclick="toggleMenu()"></div>
-    <div class="header">
+    <div class="header" id="header">
         <header class="main-layout flex align-center space-between">
-            <div class="logo">memegen</div>
+            <div  class="logo">memegen</div>
             <nav class="main-nav">
                 <ul class="clean-list flex">
                     <li><a href="#" onclick="onGallery()">Gallery</a></li>
@@ -28,61 +28,66 @@
         <section class="gallery-container main-layout flex fade active"></section>
         <section class="editor-container flex fade">
             <div class="canvas-container">
-                <canvas id="my-canvas" width="450" height="450"></canvas>
+                <canvas id="my-canvas" width="400" height="400"></canvas>
             </div>
             <div class="editor">
                 <input type="text" class="txt-input" placeholder="Enter Text" onkeyup="onChangeTxt(value)">
-                <button onclick="onAddLine()"><img src="editor/add.png" alt=""></button>
-                <button onclick="onDeleteLine()"><img src="editor/trash.png" alt=""></button>
-                <button onclick="onChangeLine()"><img src="editor/toggle.png"></button>
-                <input type="color" oninput="onTxtColorChange(value)" value="#ffffff">
-                <input type="color" oninput="onStrokeColorChange(value)" value="#ffffff">
-                <button onclick="onChangeTxtSize(1)" class="increase"><img
-                        src="editor/increase font - icon.png"></button>
-                <button onclick="onChangeTxtSize(-1)" class="decrease"><img
-                        src="editor/decrease font - icon.png"></button>
-                <button onclick="onAlignLeft()"><img src="editor/align-to-left.png"></button>
-                <button onclick="onAlignCenter()"><img src="editor/center-text-alignment.png" alt=""></button>
-                <button onclick="onAlignRight()"><img src="editor/align-to-right.png" alt=""></button>
-                <button onclick="onMoveLine(true)"><img src="editor/up.png" alt=""></button>
-                <button onclick="onMoveLine(false)"><img src="editor/down.png" alt=""></button>
-                <select onchange="onChangeFont(this.value)">
-                    <option value="">Font Style</option>
-                    <option value="Ariel">Ariel</option>
-                    <option value="Impact">Impact</option>
-                    <option value="Monospace">Monospace</option>
-                    <option value="David">David</option>
-                    <option value="Times-New-Roman">Times New Roman</option>
-                </select>
+                <div class="add-remove-change-line">
+                    <button onclick="onAddLine()"><img src="editor/add.png" alt=""></button>
+                    <button onclick="onDeleteLine()"><img src="editor/trash.png" alt=""></button>
+                    <button onclick="onChangeLine()"><img src="editor/toggle.png"></button>
+                </div>
+                <div class="btn-line-controler">
+                    <button onclick="onChangeTxtSize(1)" class="increase"><img
+                            src="editor/increase font - icon.png"></button>
+                    <button onclick="onChangeTxtSize(-1)" class="decrease"><img
+                            src="editor/decrease font - icon.png"></button>
+                    <button onclick="onAlignLeft()"><img src="editor/align-to-left.png"></button>
+                    <button onclick="onAlignCenter()"><img src="editor/center-text-alignment.png" alt=""></button>
+                    <button onclick="onAlignRight()"><img src="editor/align-to-right.png" alt=""></button>
+                    <button onclick="onMoveLine(true)"><img src="editor/up.png" alt=""></button>
+                    <button onclick="onMoveLine(false)"><img src="editor/down.png" alt=""></button>
+                </div>
+                <div class="font-color">
+                    <input type="color" oninput="onTxtColorChange(value)" value="#ffffff">
+                    <input type="color" oninput="onStrokeColorChange(value)" value="#ffffff">
+                    <select onchange="onChangeFont(this.value)">
+                        <option value="">Font Style</option>
+                        <option value="Ariel">Ariel</option>
+                        <option value="Impact">Impact</option>
+                        <option value="Monospace">Monospace</option>
+                        <option value="David">David</option>
+                        <option value="Times-New-Roman">Times New Roman</option>
+                    </select>
+                </div>
                 <button><a href="#" class="btn" onclick="onDownloadCanvas(this)" download="my-img.jpg"><img
                             src="editor/download.png"></a></button>
             </div>
         </section>
     </main>
-    <section id="about" class="about fade active">
-        <div class="about-info main-layout fade active flex">
-            <div class="about-img-container flex">
-                <img src="img/rick.jpeg" alt="">
-            </div>
-            <section class="some-words flex">
-                <h2>Rick Sanchez</h2>
-                <p class="about-txt">
-                    Hi I am Rick Wubba Lubba Dub Dub... 70 years old , From The Galaxey.
-                    Freedom fighter and a lover - To live is to risk it all, otherwise you're just an inert chunk of
-                    randomly assembled molecules drifting wherever the universe blows you </p>
-            </section>
-            <ul class="social-nav clean-list flex justify-content">
-                <li> <a class="fa facebook" href="https://www.facebook.com/"></a></li>
-                <li> <a class="fa twitter" href="https://twitter.com/?lang=en"></a></li>
-                <li> <a class="fa youtube" href="https://www.youtube.com/watch?v=F586JktJyEg"></a></li>
-                <li> <a class="fa linkedin" href="https://il.linkedin.com/"></a></li>
-            </ul>
+    <section id="about" class="about main-layout fade active">
+
+        <div class="about-img-container flex">
+         <a href="#header"><img src="img/rick.jpeg" alt=""></a>
         </div>
+        <section class="info-section flex">
+            <h2>Rick Sanchez</h2>
+            <p class="about-text">
+                Hi I am Rick Wubba Lubba Dub Dub... 70 years old , From The Galaxey.
+                Freedom fighter and a lover - To live is to risk it all, otherwise you're just an inert chunk of
+                randomly assembled molecules drifting wherever the universe blows you </p>
+        </section>
+        <ul class="social-nav clean-list flex justify-content">
+            <li> <a class="fa facebook" href="https://www.facebook.com/"></a></li>
+            <li> <a class="fa twitter" href="https://twitter.com/?lang=en"></a></li>
+            <li> <a class="fa youtube" href="https://www.youtube.com/watch?v=F586JktJyEg"></a></li>
+            <li> <a class="fa linkedin" href="https://il.linkedin.com/"></a></li>
+        </ul>
     </section>
 
     <footer class="main-footer flex space-evenly">
         <div class="main-layout flex column space-evenly">
-            <div class="logo">memegen</div>
+           <a href="#header" class="clean-list"> <div  class="logo">memegen</div></a>
             <small>© All Rights Reserved </small>
         </div>
     </footer>

@@ -41,9 +41,11 @@ html {
     content: "\f099";
 }
 
+
 body {
-    margin: 0;
     background-color: rgb(227, 227, 227);
+    font-size: .875rem;
+    margin: 0;
 }
 
 /* helpers */
@@ -56,6 +58,10 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+img {
+    cursor: pointer;
 }
 
 .flex.align-center {
@@ -96,6 +102,10 @@ body {
 
 /* ************** */
 
+button {
+    cursor: pointer;
+}
+
 
 .header {
     background-color: rgb(255, 127, 0);
@@ -103,6 +113,8 @@ body {
     /* position: sticky; */
     /* z-index: 6; */
 }
+
+
 
 .logo {
     font-family: Creepster, cursive;
@@ -113,6 +125,12 @@ body {
     color: rgb(231 227 224);
     background-color: rgba(84, 84, 84, 0);
     text-shadow: rgb(0, 0, 0) 3px 2px 4px;
+    
+}
+
+.logo footer:hover {
+    text-shadow: rgb(16 16 17) -3px 0px 0px;
+    cursor: pointer;
 }
 
 
@@ -157,16 +175,13 @@ body.menu-open .main-screen {
 }
 
 
-.main-layout {
-    max-width: 350px;
-}
-
 .gallery-container {
-    transition: 2s;
+    transition: 0.4s;
     flex-wrap: wrap;
     gap: 10px;
     margin-block-end: 30px;
     padding-block-start: 10px;
+    overflow: visible
 }
 
 .gallery-container img {
@@ -182,8 +197,8 @@ body.menu-open .main-screen {
 
 .editor-container {
     gap: 40px;
-    /* flex-wrap: wrap; */
-    transition: 0.5s;
+    transition: 0.7s;
+    height: 73vh;
     margin: 50px 0px;
     align-items: center;
     justify-content: center;
@@ -198,14 +213,10 @@ body.menu-open .main-screen {
     height: 250px;
 }
 
-/* .canvas-container {
-    width: 500px;
-    height: 500px;
-} */
 
 .editor-container img {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 }
 
@@ -222,6 +233,10 @@ body.menu-open .main-screen {
     height: 40px;
 }
 
+.font-color input {
+    cursor: pointer;
+}
+
 .editor select {
     border-radius: 6px;
     cursor: pointer;
@@ -229,40 +244,63 @@ body.menu-open .main-screen {
 }
 
 .editor-container .editor .txt-input {
-    width: 210px;
+    width: 90%;
     border-radius: 6px;
 }
 
+.add-remove-change-line {
+    display: flex;
+    gap: 15px;
+}
 
-.about {
+.btn-line-controler {
+    display: flex;
+    gap: 15px;
+}
+
+.font-color {
+    display: flex;
+    gap: 15px;
+}
+
+
+section.about {
     background-color: rgb(219, 212, 212);
 }
 
 .about h2 {
     margin: 0;
+    text-align: center;
 }
 
 .about-info {
-    gap: 50px;
     align-items: center;
+    margin-bottom: 10px;
+    flex-direction: row;
 }
 
 .about img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    border: 1px solid black;
 }
 
-.some-words {
+.about-text {
     flex-direction: column;
     align-items: center;
-    padding-left: 50px;
     margin-block-end: 20px;
 }
 
-.some-words p {
+.info-section {
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+p.about-text {
     text-align: center;
-    padding: 0 20px;
+    padding: 0 50px;
     line-height: 1.5;
     margin: 10px 0px;
     font-size: 1.15rem;
@@ -270,8 +308,8 @@ body.menu-open .main-screen {
 
 
 .social-nav a {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: rgb(146, 139, 139);
     display: flex;
     justify-content: center;
@@ -281,6 +319,7 @@ body.menu-open .main-screen {
     text-decoration: none;
     box-shadow: black -1px -2px 2px 0px
 }
+
 
 .fa.facebook:hover {
     background-color: rgb(66, 103, 178);
@@ -304,11 +343,39 @@ body.menu-open .main-screen {
     height: 130px;
     text-align: center;
     background-color: rgb(255, 127, 0);
-    align-items: space-evenly
+    /* align-items: */
+}
+
+footer a {
+    text-decoration: none;
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 450px) {
+    .main-layout {
+        min-width: 400px;
+    }
+
+    body {
+        font-size: .875rem;
+        margin: 0;
+    }
+
+    .header {
+        box-shadow: inset 0px -6px 0 rgb(255, 255, 255);
+        box-shadow: none;
+    }
+
+    header {
+        height: 35px;
+        justify-content: center;
+        box-shadow: none;
+    }
+
+    .logo {
+        font-size: 1rem;
+        padding-left: 10px;
+    }
 
     /* hamburger */
     .main-nav ul {
@@ -347,8 +414,41 @@ body.menu-open .main-screen {
         background-color: #eee;
         color: inherit;
     }
+
+    .gallery-container {
+        padding: 5px 5px;
+        margin: 5px 0px;
+    }
+
+    .gallery-container img {
+        width: 215px;
+    }
+
+    .editor-container {
+        flex-direction: column;
+    }
+
+    section.about {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
+        padding: 10px 0px;
+    }
+
+    p.about-text {
+        font-size: 0.87rem;
+        padding: 0px 40px;
+        margin-block-end: 10px;
+    }
+
+    .social-nav a {
+        width: 30px;
+        height: 30px;
+    }
 }
 
+/* 
 @media (min-width:450px) {
     .main-layout {
         max-width: 400px;
@@ -368,9 +468,13 @@ body.menu-open .main-screen {
         padding-top: 30px;
         flex-direction: column;
     }
-}
+} */
 
 @media (min-width:650px) {
+    body {
+        margin: 0;
+    }
+
     .main-layout {
         max-width: 570px;
     }
@@ -397,6 +501,8 @@ body.menu-open .main-screen {
     }
 
 
+
+
 }
 
 
@@ -414,6 +520,16 @@ body.menu-open .main-screen {
         gap: 25px;
         margin-block-end: 30px;
         padding-block-start: 10px;
+    }
+
+    section.about {
+        background-color: rgb(219, 212, 212);
+        height: 250px;
+        display: flex;
+        margin-block-end: 30px;
+        align-items: center;
+        padding-right: 20px;
+
     }
 
 
