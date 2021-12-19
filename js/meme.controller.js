@@ -46,7 +46,7 @@ function renderGallery() {
 function drawText(txt, x, y, lineIdx) {
     const meme = getMeme()
     gCtx.textAlign = meme.lines[lineIdx].align
-    gCtx.lineWidth = 4
+    gCtx.lineWidth = 2
     gCtx.lineJoin = 'round'
     gCtx.font = `${meme.lines[lineIdx].size}px ${meme.lines[lineIdx].font}`
     gCtx.fillStyle = meme.lines[lineIdx].color
