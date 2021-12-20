@@ -63,8 +63,6 @@ function updateTxtSize(value) {
 
 function setSelectedLineIdx() {
     var lineIdx = gMeme.selectedLineIdx
-    console.log(lineIdx);
-    console.log(gMeme.lines.length);
     if (lineIdx >= gMeme.lines.length - 1 || lineIdx < 0) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx++
 
