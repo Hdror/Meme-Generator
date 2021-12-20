@@ -188,6 +188,7 @@ body.menu-open .main-screen {
     border: 2px solid #ccc;
     width: 180px;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 .gallery-container img:hover {
